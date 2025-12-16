@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 18th Birthday, Anchal!</title>
+    <style>
+        /* ---------------------------------- */
+        /* CSS Styling (Lavender & Black Theme) */
+        /* ---------------------------------- */
+
+        :root {
+            --primary-color: #E6E6FA; /* Light Lavender/Thistle */
+            --secondary-color: #1A1A1A; /* Deep Black/Dark Grey */
+            --accent-color: #9370DB; /* Medium Purple/Highlight */
+            --text-light: #f4f4f4;
+            --text-dark: var(--secondary-color);
+            --font-family: 'Georgia', serif;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            font-family: var(--font-family);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle, rgba(147, 112, 219, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(40, 40, 40, 0.9); /* Slightly transparent black box */
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(147, 112, 219, 0.5); /* Glowing lavender shadow */
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: var(--accent-color);
+            margin-bottom: 0.1em;
+            text-shadow: 0 0 10px rgba(230, 230, 250, 0.5);
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+
+        .message-box {
+            background: var(--primary-color);
+            color: var(--text-dark);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.8s ease-in-out;
+            font-size: 1.1em;
+            text-align: left;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .message-box.revealed {
+            opacity: 1;
+            max-height: 500px; /* Adjust based on content size */
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+
+        .reveal-button {
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(147, 112, 219, 0.5);
+        }
+
+        .reveal-button:hover {
+            background-color: #6A5ACD; /* Darker accent */
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(147, 112, 219, 0.7);
+        }
+
+        /* Confetti/Heart Animation (Simple CSS Sparkles) */
+        .sparkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: fall 5s linear infinite;
+        }
+
+        /* Generating 5 random sparkle positions */
+        .sparkle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { left: 30%; animation-delay: 1s; }
+        .sparkle:nth-child(3) { left: 50%; animation-delay: 2s; }
+        .sparkle:nth-child(4) { left: 70%; animation-delay: 3s; }
+        .sparkle:nth-child(5) { left: 90%; animation-delay: 4s; }
+
+        @keyframes fall {
+            0% { top: -10%; opacity: 1; transform: scale(1); }
+            50% { transform: scale(1.5); }
+            100% { top: 110%; opacity: 0.5; transform: scale(0.5); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    
+    <div class="container">
+        <h1>Happy 18th Birthday!</h1>
+        <h2>To the wonderful Anchal, on February 7th, 2026.</h2>
+        
+        <p>This day marks the beginning of an incredible new chapter. Press the button below to see a small message from my heart.</p>
+
+        <button class="reveal-button" id="revealBtn">
+            Click to Reveal Surprise!
+        </button>
+
+        <div class="message-box" id="secretMessage">
+            <p><strong>My Dearest Anchal,</strong></p>
+            <p>Eighteen! It feels like just yesterday we were [**Add a small, personal, non-date-specific memory here, e.g., "laughing uncontrollably at that silly movie" or "planning our next adventure"**].</p>
+            <p>Today, you officially step into a new world of possibilities, dreams, and independence. Witnessing your journey—your kindness, your strength, and your beautiful spirit—is the greatest gift I could ever ask for.</p>
+            <p>May your 18th year be filled with unforgettable moments, bold successes, and endless happiness. Thank you for being the light in my life.</p>
+            <p>All my love, always.</p>
+            <p>Your [**Your Name/Nickname**]</p>
+        </div>
+    </div>
+
+    <script>
+        const revealBtn = document.getElementById('revealBtn');
+        const secretMessage = document.getElementById('secretMessage');
+
+        revealBtn.addEventListener('click', () => {
+            // Toggle the 'revealed' class to trigger CSS transition
+            secretMessage.classList.toggle('revealed');
+
+            // Change button text after click
+            if (secretMessage.classList.contains('revealed')) {
+                revealBtn.textContent = "Message Revealed!";
+                // Optional: Disable button after first click
+                // revealBtn.disabled = true;
+            } else {
+                revealBtn.textContent = "Click to Reveal Surprise!";
+            }
+        });
+    </script>
+</body>
+</html>
